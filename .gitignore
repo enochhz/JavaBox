@@ -12,7 +12,6 @@ out
 gen
 .idea/
 JavaBox.iml
-src/
 target/
 
 ### Java template
