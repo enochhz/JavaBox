@@ -41,3 +41,5 @@ hs_err_pid*
 ### Example user template template
 ### Example user template
 
+.DS_Store
+src/main/resources/
