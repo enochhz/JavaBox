@@ -67,6 +67,7 @@ public class FolderWatch {
                         case "ENTRY_MODIFY":
                             System.out.printf("%s. Modify: %s/%s\n", eventCounter, dir, fileName);
                             modify(sourceFile, destFile);
+                            BucketOperation.updateFile(s3, bucketName, sourceFile, fileName.toString());
                             break;
                         default:
                             System.out.printf("%s. Unknown: %s/%s\n", eventCounter, dir, fileName);
