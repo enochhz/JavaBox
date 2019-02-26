@@ -1,3 +1,7 @@
+# Test Folder
+TestFolder/*
+TestFolderCopy/*
+
 # IntelliJ project files
 .idea
 *.iml

@@ -14,7 +14,6 @@ public class MainApp {
     static String sourceFolderName = CommonSources.SOURCE_FOLDER_NAME;
     static String destinationFolderName = CommonSources.DESTINATION_FOLDER_NAME;
 
-
     public static void main(String[] args) {
         reset();
         start();
