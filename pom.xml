@@ -31,7 +31,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <!-- CircleCI build workaround -->
-                    <argLine>1.8.0_181-8u181-b13-2~deb9u1-b13-Xms1024m -Xmx2048m</argLine>
+                    <argLine>-Xmx1024m -Xms1024m -XX:MaxPermSize=512m -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
                     <reuseForks>true</reuseForks>
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
