@@ -41,3 +41,4 @@ jobs:
       - run: mvn integration-test
       - run: mvn cobertura:cobertura
       - run: mvn checkstyle:checkstyle
+      - run: mvn findbugs:findbugs
