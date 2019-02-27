@@ -9,27 +9,43 @@ import static org.junit.Assert.assertEquals;
 
 public class MainApp {
 
-    static AmazonS3 s3 = CommonSources.s3;
-    static String bucketName = CommonSources.BUCKET_NAME;
-    static String sourceFolderName = CommonSources.SOURCE_FOLDER_NAME;
-    static String destinationFolderName = CommonSources.DESTINATION_FOLDER_NAME;
+    AmazonS3 s3;
+    String bucketName;
+    static String sourceFolderName;
+    static String destinationFolderName;
 
     public static void main(String[] args) {
-        reset();
-        start();
+        AmazonS3 s3 = CommonSources.s3;
+        String bucketName = CommonSources.BUCKET_NAME;
+        String sourceFolderName = CommonSources.SOURCE_FOLDER_NAME;
+        String destinationFolderName = CommonSources.DESTINATION_FOLDER_NAME;
+
+        MainApp app = new MainApp(s3, bucketName, sourceFolderName, destinationFolderName);
+        app.start(false);
     }
 
-    public static void reset() {
-        new AmazonBucket(s3, bucketName).deleteBucket();
+    public MainApp(AmazonS3 s3, String bucketName, String sourceFolderName, String destinationFolderName) {
+        this.s3 = s3;
+        this.bucketName = bucketName;
+        this.sourceFolderName = sourceFolderName;
+        this.destinationFolderName = destinationFolderName;
     }
 
-    @Test
-    public static void start() {
+    public boolean start(boolean testMode) {
+        // reset the bucket
+//        new AmazonBucket(s3, bucketName).deleteBucket();
+
         // Create the bucket first
-        new AmazonBucket(s3, bucketName).createBucket();
+//        new AmazonBucket(s3, bucketName).createBucket();
 
         // Start to watch the file
-        FolderWatch folderWatch = new FolderWatch(s3, bucketName, sourceFolderName, destinationFolderName);
-        folderWatch.startToWatch();
+        try {
+            FolderWatch folderWatch = new FolderWatch(s3, bucketName, sourceFolderName, destinationFolderName);
+            folderWatch.startToWatch(testMode);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

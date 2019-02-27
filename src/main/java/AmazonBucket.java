@@ -49,10 +49,10 @@ public class AmazonBucket {
         return named_bucket;
     }
 
-    public void deleteBucket() {
+    public boolean deleteBucket() {
         System.out.println("Deleting S3 bucket: " + bucketName);
         try {
-            System.out.println(" - removing objects from bucket");
+            // removing objects from bucket
             ObjectListing object_listing = s3.listObjects(bucketName);
             while (true) {
                 for (Iterator<?> iterator =
@@ -70,7 +70,7 @@ public class AmazonBucket {
                 }
             };
 
-            System.out.println(" - removing versions from bucket");
+            // removing version from bucket
             VersionListing version_listing = s3.listVersions(
                     new ListVersionsRequest().withBucketName(bucketName));
             while (true) {
@@ -89,13 +89,13 @@ public class AmazonBucket {
                     break;
                 }
             }
-
-            System.out.println(" OK, bucket ready to delete!");
+            // bucket ready to delete
             s3.deleteBucket(bucketName);
         } catch (AmazonServiceException e) {
             System.err.println(e.getErrorMessage());
-            System.exit(1);
+            return false;
         }
         System.out.println("Delete bucket: " + bucketName + ". - Done!\n");
+        return true;
     }
 }

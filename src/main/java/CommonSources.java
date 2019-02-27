@@ -10,7 +10,8 @@ public class CommonSources {
     // Amazon S3 information
     public static String ACCESS_KEY_ID = "AKIAID6PVG6VZ5K2WY6A";
     public static String ACCESS_SEC_KEY = "Za49uL0EfiWQ2IX2BtFhEuJJSgjKA3WyuoCgrbO6";
-    public static String BUCKET_NAME = "enochtestbucket";
+    public static String BUCKET_NAME = "enochbucket0513";
+    public static String TEST_BUCKET_NAME = "enochtestbucket";
     // Amazon s3 instance
     final static AWSCredentials credentials = new BasicAWSCredentials(ACCESS_KEY_ID, ACCESS_SEC_KEY);
     final static AmazonS3 s3 = AmazonS3ClientBuilder
