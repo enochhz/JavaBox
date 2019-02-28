@@ -14,7 +14,7 @@ public class FolderWatcherTest {
         createTemporaryFile();
         while ((System.nanoTime() - startTime) / 1000 < 5000000) {
         }
-        assertEquals(0, folderWatcher.getEventCounter());
+        assertEquals(1, folderWatcher.getEventCounter());
         folderWatcher.stop();
     }
 
