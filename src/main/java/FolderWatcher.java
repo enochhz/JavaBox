@@ -1,4 +1,6 @@
 import com.amazonaws.services.s3.AmazonS3;
+import org.mortbay.util.IO;
+
 import java.io.*;
 import java.nio.file.*;
 import static java.nio.file.StandardWatchEventKinds.*;
@@ -14,7 +16,7 @@ public class FolderWatcher extends Thread{
     private WatchService watcher;
 
     public FolderWatcher(AmazonS3 s3, String bucketName, String sourceFolderName)
-        throws Exception {
+        throws IOException {
         this.watcher = FileSystems.getDefault().newWatchService();
         this.key = Paths.get(sourceFolderName).register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
         this.eventCounter = 0;
