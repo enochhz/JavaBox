@@ -13,7 +13,7 @@ public class App {
     private String bucketName;
     private AmazonS3 s3;
 
-    public static void main(String[] args) {
+    public final static void main(String[] args) {
         App app = new App("LocalFolder", "enochbucket0513");
         app.start();
     }
@@ -34,7 +34,9 @@ public class App {
         this.watchFolder = folder;
         this.bucketName = bucketName;
         AWSCredentials credentials = new BasicAWSCredentials(accessKeyId, accessSecKey);
-        s3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(Regions.US_WEST_1).build();
+        s3 = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withRegion(Regions.US_WEST_1).build();
     }
 
     public void start() {
