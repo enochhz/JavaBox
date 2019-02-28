@@ -1,8 +1,8 @@
 # JavaBox
 A maven project similar to Dropbox with the following features: 
-1. Keep watching the folder TestFolder 
+1. Keep watching the folder LocalFolder 
 2. Detects any changes in the folder: new files, deleted files, modified files
-3. Sync up all the changes from TestFolder to specific AWS S3 bucket
+3. Sync up all the changes from LocalFolder to specific AWS S3 bucket
 
 # Testing Implemented 
 1. Uint Testing (JUint)
