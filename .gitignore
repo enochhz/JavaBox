@@ -1,6 +1,7 @@
 # Test Folder
 TestFolder/*
 TestFolderCopy/*
+.s3_info
 
 # IntelliJ project files
 .idea

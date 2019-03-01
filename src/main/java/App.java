@@ -5,7 +5,10 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class App {
 
@@ -19,8 +22,19 @@ public class App {
     }
 
     public static AmazonS3 generatedAmazonS3() {
-        String accessKeyId = "AKIAID6PVG6VZ5K2WY6A";
-        String accessSecKey = "Za49uL0EfiWQ2IX2BtFhEuJJSgjKA3WyuoCgrbO6";
+        // Get accessKeyId and accessSecKey info frim .s3_info file
+        File file = new File(".s3_info");
+        String accessKeyId = "";
+        String accessSecKey = "";
+        try {
+            Scanner scanner = new Scanner(file);
+            accessKeyId = scanner.nextLine();
+            accessSecKey = scanner.nextLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(accessKeyId);
+        System.out.println(accessSecKey);
         AWSCredentials credentials = new BasicAWSCredentials(accessKeyId, accessSecKey);
         AmazonS3 s3 = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
