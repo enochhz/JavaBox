@@ -5,7 +5,7 @@ A maven project similar to Dropbox with the following features:
 3. Sync up all the changes from LocalFolder to specific AWS S3 bucket
 
 # Testing Implemented 
-1. Uint Testing (JUnit)
+1. Unit Testing and Integration Testing (JUnit)
 2. Mocking (Mockito)
 3. Static Code Analysis (CheckStyle, FindBugs)
 4. Code Coverage (Cobertura)
