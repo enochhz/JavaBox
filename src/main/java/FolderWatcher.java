@@ -1,11 +1,10 @@
 import com.amazonaws.services.s3.AmazonS3;
-import org.mortbay.util.IO;
 
 import java.io.*;
 import java.nio.file.*;
 import static java.nio.file.StandardWatchEventKinds.*;
 
-public class FolderWatcher extends Thread{
+public class FolderWatcher {
 
     private String sourceFolderName;
     private WatchKey key;
@@ -29,7 +28,7 @@ public class FolderWatcher extends Thread{
         return eventCounter;
     }
 
-    public void run() {
+    public void start() {
         System.out.println("Starting to watch folder: " + sourceFolderName);
         while (true) {
             eventProcess();

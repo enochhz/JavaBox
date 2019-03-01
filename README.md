@@ -7,8 +7,9 @@ A maven project similar to Dropbox with the following features:
 # Testing Implemented 
 1. Uint Testing (JUint)
 2. Mocking (Mockito)
-3. Code Coverage (Cobertura)
-4. Static Code Analysis (CheckStyle, FindBugs)
+3. Static Code Analysis (CheckStyle, FindBugs)
+4. Code Coverage (Cobertura)
+![Alt text](/screenshots/code_coverage.png)
 
 # Continuous Integration using Circle CI
-![Alt text](/images/circleci_screenshot.png)
+![Alt text](/screenshots/circleci.png)

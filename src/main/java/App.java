@@ -28,6 +28,12 @@ public class App {
         return s3;
     }
 
+    public App(String folder, AmazonS3 s3, String bucketName) {
+        this.watchFolder = folder;
+        this.s3 = s3;
+        this.bucketName = bucketName;
+    }
+
     public String getFolderName() {
         return watchFolder;
     }
@@ -40,16 +46,10 @@ public class App {
         return bucketName;
     }
 
-    public App(String folder, AmazonS3 s3, String bucketName) {
-        this.watchFolder = folder;
-        this.s3 = s3;
-        this.bucketName = bucketName;
-    }
-
     public void start() throws NullPointerException {
         try {
             FolderWatcher folderWatcher = new FolderWatcher(s3, bucketName, watchFolder);
-            folderWatcher.run();
+            folderWatcher.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

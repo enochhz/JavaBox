@@ -48,16 +48,32 @@ public class BucketHelperTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void testBucketMethodsWithNull() {
-        bucketOperation.uploadFile(null, bucketName, new File(localFolder + "/" + fileName), fileName);
-        bucketOperation.deleteFile(null, bucketName, fileName);
+    public void testUploadFileWithNull() {
         bucketOperation.uploadFile(null, bucketName, new File(localFolder + "/" + fileName), fileName);
     }
 
     @Test(expected = AmazonServiceException.class)
-    public void testBucketMethodsWithServiceException() {
+    public void testUploadFileWithServiceException() {
         bucketOperation.uploadFile(bads3, bucketName, new File(localFolder + "/" + fileName), fileName);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testDeleteFileWithNull() {
+        bucketOperation.deleteFile(null, bucketName, fileName);
+    }
+
+    @Test(expected = AmazonServiceException.class)
+    public void testDeleteFileWithServiceException() {
         bucketOperation.deleteFile(bads3, bucketName, fileName);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testUpdateFileWithNull() {
+        bucketOperation.updateFile(null, bucketName, new File(localFolder + "/" + fileName), fileName);
+    }
+
+    @Test(expected = AmazonServiceException.class)
+    public void testUpdateFileWithServiceException() {
         bucketOperation.uploadFile(bads3, bucketName, new File(localFolder + "/" + fileName), fileName);
     }
 
